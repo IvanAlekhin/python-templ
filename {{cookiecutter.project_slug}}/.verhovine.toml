@@ -1,0 +1,46 @@
+version = 1
+[global]
+envs = [
+    'LISTEN_PORT',
+    'LISTEN_HOST',
+    'DB_NAME',
+    'DB_MAX_CON',
+    'DB_USER',
+    'DB_PASSWORD',
+    'DB_HOST',
+    'DB_PORT',
+    'LOG_LEVEL',
+    'NEW_RELIC_DEVELOPER_MODE',
+    'NEW_RELIC_ENABLE',
+    'NEW_RELIC_CONFIG_FILE',
+    'CI_PIPELINE_ID',
+]
+cpu_request = 300
+cpu_limit = 600
+mem_request = 256
+mem_limit = 512
+image_pull_secret = "gitlab-registry"
+
+[global.probes.liveness]
+type = "http"
+path = "/_health"
+initial_delay = 4
+period = 1
+failure_threshold = 2
+
+[global.probes.readiness]
+type = "http"
+path = "/_health"
+initial_delay = 5
+period = 1
+failure_threshold = 1
+
+[network]
+public_port = 80
+pod_port = 8788
+
+[task]
+
+[ingress]
+[ingress.api]
+path = "/api/(.*)"

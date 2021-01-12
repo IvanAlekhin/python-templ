@@ -1,0 +1,6 @@
+{
+    "project_slug": "python_boilerplate",
+    "project_infra_name": "{{ cookiecutter.project_slug.lower().replace(' ', '-').replace('_', '-') }}",
+    "project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
+    "version": "0.0.1"
+}

@@ -1,0 +1,11 @@
+include:
+  - project: 'core/ci-templates/includes'
+    ref: '2020-09-25' # Git SHA
+    file: 'k8s-verhovine-ci.yaml'
+
+variables:
+  extends: .base_variables
+  STAGING_NAMESPACE: {{cookiecutter.project_infra_name}}-preprod
+  PRODUCTION_NAMESPACE: {{cookiecutter.project_infra_name}}
+  SERVICE_NAME: {{cookiecutter.project_infra_name}}
+  WEB_ROOT_PATH: /api/doc
